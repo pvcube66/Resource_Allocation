@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skills Tracker</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    width: 80%;
+    margin: 20px auto;
+  }
+
+  h1 {
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 20px;
+  }
+
+  .form-container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #007bff;
+  }
+
+  .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    resize: vertical;
+  }
+
+  .form-group textarea:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+
+  .btn-submit {
+    display: inline-block;
+    padding: 10px 20px;
+    color: white;
+    background-color: #007bff;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+
+  .btn-submit:hover {
+    background-color: #0056b3;
+  }
+
+  /* Chatbot Icon Styles */
+  .chatbot-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
+
+  .chatbot-icon img {
+    width: 50px; /* Adjust size as needed */
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+
+  .chatbot-icon img:hover {
+    transform: scale(1.1);
+  }
+
+  /* Chatbot Popup Styles */
+  .chat-popup {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 400px;
+    max-width: 100%;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    display: none; /* Hidden by default */
+    z-index: 1001;
+  }
+
+  .chat-header {
+    background: #007bff;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .chat-messages {
+    padding: 10px;
+    height: 300px;
+    overflow-y: auto;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .message {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    max-width: 80%;
+  }
+
+  .user-message {
+    background: #e0e0e0;
+    text-align: right;
+  }
+
+  .bot-message {
+    background: #007bff;
+    color: #fff;
+    text-align: left;
+  }
+
+  .chat-input {
+    display: flex;
+    padding: 10px;
+  }
+
+  .chat-input input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+
+  .chat-input button {
+    padding: 10px;
+    border: none;
+    background: #007bff;
+    color: #fff;
+    cursor: pointer;
+    margin-left: 10px;
+    border-radius: 4px;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Skills Tracker</h1>
+
+  <div class="form-container">
+    <form>
+      <div class="form-group">
+        <label for="currentSkills">Current Skills</label>
+        <textarea id="currentSkills" name="currentSkills" rows="4" placeholder="Enter your current skills here..." required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="skillsToLearn">Skills to Learn</label>
+        <textarea id="skillsToLearn" name="skillsToLearn" rows="4" placeholder="Enter the skills you want to learn here..." required></textarea>
+      </div>
+
+      <button type="submit" class="btn-submit">Submit</button>
+    </form>
+  </div>
+</div>
+
+<!-- Chatbot Icon -->
+<div class="chatbot-icon">
+    <a href="#" id="chatbot-link">
+      <img src="static\images\chatbot.png" alt="Chatbot Icon">
+    </a>
+</div>
+
+<!-- Chatbot Popup -->
+<div class="chat-popup" id="chat-popup">
+  <div class="chat-header">
+    <h2>AI Chatbot</h2>
+  </div>
+  <div class="chat-messages" id="chat-messages">
+    <!-- Messages will appear here -->
+  </div>
+  <div class="chat-input">
+    <input type="text" id="user-input" placeholder="Type a message...">
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
+
+<script>
+  document.getElementById('chatbot-link').addEventListener('click', function(event) {
+    event.preventDefault();
+    const chatPopup = document.getElementById('chat-popup');
+    if (chatPopup.style.display === 'none' || chatPopup.style.display === '') {
+      chatPopup.style.display = 'block';
+    } else {
+      chatPopup.style.display = 'none';
+    }
+  });
+
+  async function sendMessage() {
+    const userInput = document.getElementById('user-input').value;
+    const chatMessages = document.getElementById('chat-messages');
+
+    if (userInput.trim() !== '') {
+      // Create user message element
+      const userMessage = document.createElement('div');
+      userMessage.classList.add('message', 'user-message');
+      userMessage.textContent = userInput;
+      chatMessages.appendChild(userMessage);
+
+      // Clear the input field
+      document.getElementById('user-input').value = '';
+
+      // Send the message to the backend
+      try {
+        const response = await fetch('/chat', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ message: userInput })
+        });
+
+        const data = await response.json();
+
+        // Create bot message element
+        const botMessage = document.createElement('div');
+        botMessage.classList.add('message', 'bot-message');
+        botMessage.textContent = data.reply;
+        chatMessages.appendChild(botMessage);
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    }
+  }
+</script>
+
+</body>
+</html>

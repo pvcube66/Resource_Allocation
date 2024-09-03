@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add New Project</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    width: 80%;
+    margin: 20px auto;
+  }
+
+  h1 {
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 20px;
+  }
+
+  .form-container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #007bff;
+  }
+
+  .form-group input, .form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  .form-group input:focus, .form-group select:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+
+  .btn-submit {
+    display: inline-block;
+    padding: 10px 20px;
+    color: white;
+    background-color: #007bff;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+
+  .btn-submit:hover {
+    background-color: #0056b3;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Add New Project</h1>
+
+  <div class="form-container">
+    <form action="submitProject.php" method="post">
+      <div class="form-group">
+        <label for="projectNo">Project No</label>
+        <input type="text" id="projectNo" name="projectNo" required>
+      </div>
+
+      <div class="form-group">
+        <label for="projectName">Project Name</label>
+        <input type="text" id="projectName" name="projectName" required>
+      </div>
+
+      <div class="form-group">
+        <label for="departments">Project Departments</label>
+        <input type="text" id="departments" name="departments" required>
+      </div>
+
+      <div class="form-group">
+        <label for="budget">Budget</label>
+        <input type="number" id="budget" name="budget" step="0.01" required>
+      </div>
+
+      <button type="submit" class="btn-submit">Add Project</button>
+    </form>
+  </div>
+</div>
+
+</body>
+</html>

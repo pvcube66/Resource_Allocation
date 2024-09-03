@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    width: 80%;
+    margin: 20px auto;
+  }
+
+  h1 {
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 20px;
+  }
+
+  .dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .block {
+    background-color: #007bff;
+    color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    width: 23%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  }
+
+  .block h2 {
+    margin-top: 0;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    color: white;
+    background-color: #0056b3;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 16px;
+  }
+
+  .btn:hover {
+    background-color: #004494;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Admin Dashboard</h1>
+
+  <div class="dashboard">
+    <div class="block">
+      <h2>Inter Dept Projects</h2>
+      <p>View and manage projects involving multiple departments.</p>
+      <a href="inter.html" class="btn">View Projects</a>
+    </div>
+
+    <div class="block">
+      <h2>Intra Dept Projects</h2>
+      <p>View and manage projects within a single department.</p>
+      <a href="intra.html" class="btn">View Projects</a>
+    </div>
+
+    <div class="block">
+      <h2>Add New Project</h2>
+      <p>Add details of a new project to the system.</p>
+      <a href="addNewProject.html" class="btn">Add Project</a>
+    </div>
+
+    <div class="block">
+      <h2>AI Features</h2>
+      <p>Manage and configure AI-driven features and analytics.</p>
+      <a href="aiFeatures.html" class="btn">Configure AI</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

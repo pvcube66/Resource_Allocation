@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Forum</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 0;
+  }
+
+  header {
+    background-color: #007bff;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+  }
+
+  .container {
+    width: 80%;
+    margin: 20px auto;
+  }
+
+  h1, h2 {
+    color: #007bff;
+  }
+
+  .section {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+
+  .discussion {
+    margin-bottom: 20px;
+  }
+
+  .discussion h3 {
+    margin-top: 0;
+  }
+
+  .message {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+
+  .message p {
+    margin: 0;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .form-group input, .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }
+
+  .form-group textarea {
+    height: 100px;
+    resize: vertical;
+  }
+
+  .btn-submit {
+    display: inline-block;
+    padding: 10px 20px;
+    color: white;
+    background-color: #007bff;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .btn-submit:hover {
+    background-color: #0056b3;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Project Forum</h1>
+</header>
+
+<div class="container">
+  <div class="section">
+    <h2>Discussion Topics</h2>
+
+    <div class="discussion">
+      <h3>Project Collaboration</h3>
+      <div class="message">
+        <p><strong>Chandu (Electricity Dept):</strong> Looking for suggestions on how to integrate our new system with existing platforms. Any ideas?</p>
+      </div>
+      <div class="message">
+        <p><strong> Madhu (Marketing Department):</strong> Have you considered using API integrations? They might simplify the process.</p>
+      </div>
+    </div>
+
+    <div class="discussion">
+      <h3>Budget Allocation</h3>
+      <div class="message">
+        <p><strong>Samson (Finance Department):</strong> What’s the current budget status for the project? Can we adjust it for additional resources?</p>
+      </div>
+      <div class="message">
+        <p><strong>Dhanush (Project Management):</strong> We might need to revisit the budget planning phase to accommodate new requirements.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Post a New Message</h2>
+    <form>
+      <div class="form-group">
+        <label for="department">Your Department:</label>
+        <input type="text" id="department" name="department" placeholder="Your Department">
+      </div>
+      <div class="form-group">
+        <label for="topic">Topic:</label>
+        <input type="text" id="topic" name="topic" placeholder="Discussion Topic">
+      </div>
+      <div class="form-group">
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" placeholder="Write your message here"></textarea>
+      </div>
+      <button type="submit" class="btn-submit">Post Message</button>
+    </form>
+  </div>
+</div>
+
+</body>
+</html>
